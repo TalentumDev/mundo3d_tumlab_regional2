@@ -16,7 +16,7 @@ services:
       WEB_SUPPORT :
       HAS_SYNCHRONIZATION: true
       IS_TUMLAB: true
-      CORS_WHITELIST: "http://localhost:8084,http://tumlab.local:3002,http://localhost:3000,http://localhost:4002,http://localhost:4000,http://localhost:3003,http://localhost:3005"
+      CORS_WHITELIST: "http://localhost:8084,http://tumlab.local:3002,http://localhost:3000,http://localhost:4002,http://localhost:4000,http://localhost:3003,http://localhost:3005,http://tumlab.local:8079"
       FRONTEND_URL : "http://tumlab.local:3002"
       DEFAULT_PASSWORD_ENABLED: "true"
       DEFAULT_PASSWORD_VALUE: "12345Az!"
@@ -34,7 +34,7 @@ services:
       KEYCLOAK_CLIENT_ID : regional-client
       KEYCLOAK_ID : regional-client
       KEYCLOAK_USER : admin
-      KEYCLOAK_PASSWORD : admin
+      KEYCLOAK_PASSWORD : 8WrnMIr9iO
       KEYCLOAK_REALM : regional-realm
       KEYCLOAK_SECRET : B8yPzlT4txHjz1YKCgAVQNV7E0CrZoFd
       MINIO_ACCESSKEY : admin
@@ -87,7 +87,7 @@ services:
       KEYCLOAK_CLIENT_ID : regional-client
       KEYCLOAK_ID : regional-client
       KEYCLOAK_USER : admin
-      KEYCLOAK_PASSWORD : admin
+      KEYCLOAK_PASSWORD : 8WrnMIr9iO
       KEYCLOAK_REALM : regional-realm
       KEYCLOAK_SECRET : B8yPzlT4txHjz1YKCgAVQNV7E0CrZoFd
       EMAIL_HOST: "smtp-mail.outlook.com"
