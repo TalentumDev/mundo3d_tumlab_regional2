@@ -1,0 +1,33 @@
+{
+    "save": false,
+    "activeTypeServer": 0,
+    "resInfo": "ju0cuzK/quvBKMNOcBBYJgi27FiZ9maUiz9zKSXCh2etmyy/yIZNI1YF2OHzP3dGbnJXJUHUg4eYP1xfa++3i3k95YQlNAa8q4RyYwfr+EbSarhTvzljKbb4FzJGcOXx",
+    "data": [
+        {
+            "typeServer": 0,
+            "serverHost": "http://tumlab.local:4002/api/v1/"
+        },
+        {
+            "typeServer": 1,
+            "serverHost": "https://api.aulasregionalfase2.com/api/v1/"
+        },
+        {
+            "typeServer": 2,
+            "serverHost": "https://api-qa.aulasregionalfase2.com/api/v1/"
+        }
+    ],
+    "resetPasswords":[
+        {
+            "typeServer": 0,
+            "link": "http://tumlab.local:3002/login"
+        },
+        {
+            "typeServer": 1,
+            "link": "https://si.aulasregionalfase2.com/login"
+        },
+        {
+            "typeServer": 2,
+            "link": "https://si-qa.aulasregionalfase2.com/login"
+        }
+    ]
+}
