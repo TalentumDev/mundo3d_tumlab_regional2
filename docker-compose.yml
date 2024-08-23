@@ -139,7 +139,7 @@ services:
       - regional-net
 
   regional-frontend:
-    image: bilinguismotalentum/regional-fase2-si-frontend:1.5.8
+    image: bilinguismotalentum/regional-fase2-si-frontend:1.5.9
     container_name: regional-2-si-frontend
     extra_hosts:
       - "host.docker.internal:host-gateway"
