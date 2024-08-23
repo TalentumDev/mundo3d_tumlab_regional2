@@ -116,6 +116,7 @@ services:
     environment:
       NODE_ENV : prod
       APP_PORT : 3002
+      URL_SWAGGER_PRODUCTION : http://tumlab.local:4006
       API_KEY: "7kiNYGNEa6njqYUU9E1FEhYibT6iyeCyakvrWiVxy6gmWAe0pbkNSMQ19htdo2Y1"
       LOCAL_QUEUE_HOST: tumlab.local:5672
       LOCAL_QUEUE_USERNAME: synchronizer-agent
