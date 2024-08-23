@@ -7,6 +7,7 @@ services:
     restart: always
     extra_hosts:
       - "host.docker.internal:host-gateway"
+      - "tumlab.local:host-gateway"
     environment:
       NODE_ENV : production
       APP_PORT: 4000
@@ -27,9 +28,9 @@ services:
       KEYCLOAK_DB_PORT : 5432
       KEYCLOAK_DB_ADDR : host.docker.internal
       KEYCLOAK_DB_DATABASE : authentication
-      KEYCLOAK_DB_USER : root
-      KEYCLOAK_DB_PASSWORD : "root"
-      KEYCLOAK_AUTH_SERVER_URL : http://host.docker.internal:8080/auth
+      KEYCLOAK_DB_USER : postgres
+      KEYCLOAK_DB_PASSWORD : "Tumlab2022*"
+      KEYCLOAK_AUTH_SERVER_URL : http://tumlab.local:8081/auth
       KEYCLOAK_CLIENT_ID : regional-client
       KEYCLOAK_ID : regional-client
       KEYCLOAK_USER : admin
@@ -44,11 +45,11 @@ services:
       MINIO_SSL : true
       MYSQL_DATABASE : regional
       MYSQL_HOST : host.docker.internal
-      MYSQL_PASSWORD : "12345Az!"
+      MYSQL_PASSWORD : "Tumlab2022*"
       MYSQL_PORT : 3306
-      MYSQL_ROOT_PASSWORD : "rootpassword"
-      MYSQL_USER : master
-      QUEUE_HOST: 192.168.20.20:5672
+      MYSQL_ROOT_PASSWORD : "Tumlab2022*"
+      MYSQL_USER : root
+      QUEUE_HOST: tumlab.local:5672
       QUEUE_USERNAME: synchronizer-agent
       QUEUE_PASSWORD: 12345Az!
       QUEUE_VHOST: /
@@ -66,10 +67,11 @@ services:
     restart: always
     extra_hosts:
       - "host.docker.internal:host-gateway"
+      - "tumlab.local:host-gateway"
     environment:
       NODE_ENV : prod
       PORT : 3001
-      URL_SWAGGER_PRODUCTION : http://localhost:4003
+      URL_SWAGGER_PRODUCTION : http://tumlab.local:4003
       HAS_SYNCHRONIZATION: true
       IS_TUMLAB: true
       FRONTEND_URL : "http://tumlab.local:3002"
@@ -78,10 +80,10 @@ services:
       DEFAULT_PASSWORD_VALUE: "12345Az!"
       DB_DATABASE : regional
       DB_HOST : host.docker.internal
-      DB_PASSWORD : "12345Az!"
+      DB_PASSWORD : "Tumlab2022*"
       DB_PORT : 3306
-      DB_USER : master
-      KEYCLOAK_AUTH_SERVER_URL : http://host.docker.internal:8080/auth
+      DB_USER : root
+      KEYCLOAK_AUTH_SERVER_URL : http://tumlab.local:8081/auth
       KEYCLOAK_CLIENT_ID : regional-client
       KEYCLOAK_ID : regional-client
       KEYCLOAK_USER : admin
@@ -94,7 +96,7 @@ services:
       EMAIL_USER: "no_aplica"
       EMAIL_PASSWORD: "no_aplica"
       EMAIL_FROM: "no_aplica"
-      QUEUE_HOST: 192.168.20.20:5672
+      QUEUE_HOST: tumlab.local:5672
       QUEUE_USERNAME: synchronizer-agent
       QUEUE_PASSWORD: 12345Az!
       QUEUE_VHOST: /
@@ -110,11 +112,12 @@ services:
     restart: always
     extra_hosts:
       - "host.docker.internal:host-gateway"
+      - "tumlab.local:host-gateway"
     environment:
       NODE_ENV : prod
       APP_PORT : 3002
       API_KEY: "7kiNYGNEa6njqYUU9E1FEhYibT6iyeCyakvrWiVxy6gmWAe0pbkNSMQ19htdo2Y1"
-      LOCAL_QUEUE_HOST: 192.168.20.20:5672
+      LOCAL_QUEUE_HOST: tumlab.local:5672
       LOCAL_QUEUE_USERNAME: synchronizer-agent
       LOCAL_QUEUE_PASSWORD: 12345Az!
       LOCAL_QUEUE_VHOST: /
@@ -126,9 +129,9 @@ services:
       REMOTE_QUEUE_NAME: "regional_synchronizer"
       DB_DATABASE : regional
       DB_HOST : host.docker.internal
-      DB_PASSWORD : "12345Az!"
+      DB_PASSWORD : "Tumlab2022*"
       DB_PORT : 3306
-      DB_USER : master
+      DB_USER : root
     ports:
       - 4006:3002
     networks:
@@ -137,13 +140,16 @@ services:
   regional-frontend:
     image: bilinguismotalentum/regional-fase2-si-frontend:1.5.6
     container_name: regional-2-si-frontend
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      - "tumlab.local:host-gateway"
     networks:
       - regional-net
     environment:
-      NEXT_PUBLIC_API_URL: http://localhost:4002/api/v1
+      NEXT_PUBLIC_API_URL: http://tumlab.local:4002/api/v1
       NEXT_PUBLIC_DOWNLOAD_VIDEO_GAME_ANDROID: https://storage.googleapis.com/regional-2/apk/MundoInteractivoVirtual3D.apk
       NEXT_PUBLIC_DOWNLOAD_VIDEO_GAME_WINDOWS: https://drive.google.com/file/d/1NR6UZ5m8_tXgvLnrRU_5TVYcbUJtrl9-/view?usp=sharing
-      NEXT_PUBLIC_GAME_URL: http://localhost:8084
+      NEXT_PUBLIC_GAME_URL: http://tumlab.local:8084
       NEXT_PUBLIC_PASSWORD_IMAGE: Ww0KICB7DQogICAgImltYWdlIjogInRyaWFuZ2xlIiwNCiAgICAicGF0aCI6ICIvaW1hZ2VzL2ljb25zL2ZpZ3VyZV90cmlhbmdsZS5zdmciLA0KICAgICJjb2RlIjogImU0ZGFhZDI5LWRlNjYtNDU5My1iNDljLTE2ODA1NTk4NzgzOSINCiAgfSwNCiAgew0KICAgICJpbWFnZSI6ICJyaG9tYnVzIiwNCiAgICAicGF0aCI6ICIvaW1hZ2VzL2ljb25zL2ZpZ3VyZV9kaWFtb25kLnN2ZyIsDQogICAgImNvZGUiOiAiZDZhZTQ4NTQtNjlmOS00MTE3LTk1YTAtYjIwOTAxNmY0MDllIg0KICB9LA0KICB7DQogICAgImltYWdlIjogInNxdWFyZSIsDQogICAgInBhdGgiOiAiL2ltYWdlcy9pY29ucy9maWd1cmVfc3F1YXJlLnN2ZyIsDQogICAgImNvZGUiOiAiYTY4NDkwYmItNzE4ZS00MDZkLWE1MTQtMGFlNWViMDI5MGZlIg0KICB9LA0KICB7DQogICAgImltYWdlIjogInJob21ib2lkIiwNCiAgICAicGF0aCI6ICIvaW1hZ2VzL2ljb25zL2ZpZ3VyZV9xdWFkcmlsYXRlcmFsLnN2ZyIsDQogICAgImNvZGUiOiAiY2ZkYjdhYzktMTgyMC00MDgzLWEwOGYtZjNkYTEwMGFiODUxIg0KICB9LA0KICB7DQogICAgImltYWdlIjogImludmVydGVkX3RyaWFuZ2xlIiwNCiAgICAicGF0aCI6ICIvaW1hZ2VzL2ljb25zL2ZpZ3VyZV9pbnZlcnRlZF90cmlhbmdsZS5zdmciLA0KICAgICJjb2RlIjogIjJmOGU5YWZlLTg0YjEtNGMyMy1hYjEyLTFjODhjNWQzNmQ0OCINCiAgfSwNCiAgew0KICAgICJpbWFnZSI6ICJjaXJjbGUiLA0KICAgICJwYXRoIjogIi9pbWFnZXMvaWNvbnMvZmlndXJlX2NpcmNsZS5zdmciLA0KICAgICJjb2RlIjogImE0NDhkZGZjLWU5MmMtNDkxZS05OTJiLTkxNmVkNmJiN2Q5YiINCiAgfQ0KXQ==
     ports:
          - "3002:3000"
@@ -152,12 +158,48 @@ services:
     image: bilinguismotalentum/regional-game:1.1.3
     container_name: regional-game
     ports:
-      - "3005:80"
+      - "8084:80"
     volumes:
       - ./serverdata.json:/regional/StreamingAssets/serverdata.json
     networks:
       - regional-net
     restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      - "tumlab.local:host-gateway"
+
+  keycloak_regional:
+    image: docker.io/bitnami/keycloak:20
+    container_name: regional_keycloak
+    restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      - "tumlab.local:host-gateway"
+    environment:
+      KEYCLOAK_CREATE_ADMIN_USER: true
+      KEYCLOAK_ADMIN_USER: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KEYCLOAK_MANAGEMENT_USER: admin
+      KEYCLOAK_MANAGEMENT_PASSWORD: admin
+      # KEYCLOAK_DATABASE_VENDOR: POSTGRES
+      KEYCLOAK_DATABASE_HOST: host.docker.internal
+      KEYCLOAK_DATABASE_PORT: 5432
+      KEYCLOAK_DATABASE_NAME: authentication
+      KEYCLOAK_DATABASE_USER: postgres
+      KEYCLOAK_DATABASE_PASSWORD: "Tumlab2022*"
+      KEYCLOAK_DATABASE_SCHEMA: public
+      KEYCLOAK_HTTP_PORT: 8080
+      KEYCLOAK_HTTPS_PORT: 8443
+      KEYCLOAK_BIND_ADDRESS: 0.0.0.0
+      KEYCLOAK_ENABLE_STATISTICS: true
+      KEYCLOAK_PRODUCTION: false
+      KC_HTTP_RELATIVE_PATH: "/auth"
+      KEYCLOAK_LOG_LEVEL: INFO
+    ports:
+      - 8081:8080
+
+    networks:
+      - regional-net
 
 networks:
   regional-net:
