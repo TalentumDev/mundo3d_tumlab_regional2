@@ -208,9 +208,9 @@ services:
     ports:
         - 5672:5672
         - 15672:15672
-    # volumes:
-    #     - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
-    #     - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    volumes:
+        - /tumlab/apps/rabbitmq/data/:/var/lib/rabbitmq/
+        - /tumlab/apps/rabbitmq/log/:/var/log/rabbitmq
     networks:
         - regional-net
 
