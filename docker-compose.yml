@@ -123,7 +123,7 @@ services:
       LOCAL_QUEUE_PASSWORD: guest
       LOCAL_QUEUE_VHOST: /
       LOCAL_QUEUE_NAME: "regional_synchronizer"
-      REMOTE_QUEUE_HOST: "mq.talentum.edu.co"
+      REMOTE_QUEUE_HOST: "3.81.35.140:5672"
       REMOTE_QUEUE_USERNAME: "guest"
       REMOTE_QUEUE_PASSWORD: "Nh3r!yj6UatpxK*Vsb4"
       REMOTE_QUEUE_VHOST: /
