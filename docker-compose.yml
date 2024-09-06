@@ -149,14 +149,14 @@ services:
       - regional-net
     environment:
       NEXT_PUBLIC_API_URL: http://tumlab.local:4002/api/v1
-      NEXT_PUBLIC_DOWNLOAD_VIDEO_GAME_ANDROID: http://tumlab.local:3002/downloader/MundoInteractivoVirtual3D.apk
-      NEXT_PUBLIC_DOWNLOAD_VIDEO_GAME_WINDOWS: http://tumlab.local:3002/downloader/MundoInteractivoVirtual3D.zip
+      NEXT_PUBLIC_DOWNLOAD_VIDEO_GAME_ANDROID: http://tumlab.local:8084/downloader/MundoInteractivoVirtual3D.apk
+      NEXT_PUBLIC_DOWNLOAD_VIDEO_GAME_WINDOWS: http://tumlab.local:8084/downloader/MundoInteractivoVirtual3D.zip
       NEXT_PUBLIC_GAME_URL: http://tumlab.local:8084
       NEXT_PUBLIC_PASSWORD_IMAGE: Ww0KICB7DQogICAgImltYWdlIjogInRyaWFuZ2xlIiwNCiAgICAicGF0aCI6ICIvaW1hZ2VzL2ljb25zL2ZpZ3VyZV90cmlhbmdsZS5zdmciLA0KICAgICJjb2RlIjogImU0ZGFhZDI5LWRlNjYtNDU5My1iNDljLTE2ODA1NTk4NzgzOSINCiAgfSwNCiAgew0KICAgICJpbWFnZSI6ICJyaG9tYnVzIiwNCiAgICAicGF0aCI6ICIvaW1hZ2VzL2ljb25zL2ZpZ3VyZV9kaWFtb25kLnN2ZyIsDQogICAgImNvZGUiOiAiZDZhZTQ4NTQtNjlmOS00MTE3LTk1YTAtYjIwOTAxNmY0MDllIg0KICB9LA0KICB7DQogICAgImltYWdlIjogInNxdWFyZSIsDQogICAgInBhdGgiOiAiL2ltYWdlcy9pY29ucy9maWd1cmVfc3F1YXJlLnN2ZyIsDQogICAgImNvZGUiOiAiYTY4NDkwYmItNzE4ZS00MDZkLWE1MTQtMGFlNWViMDI5MGZlIg0KICB9LA0KICB7DQogICAgImltYWdlIjogInJob21ib2lkIiwNCiAgICAicGF0aCI6ICIvaW1hZ2VzL2ljb25zL2ZpZ3VyZV9xdWFkcmlsYXRlcmFsLnN2ZyIsDQogICAgImNvZGUiOiAiY2ZkYjdhYzktMTgyMC00MDgzLWEwOGYtZjNkYTEwMGFiODUxIg0KICB9LA0KICB7DQogICAgImltYWdlIjogImludmVydGVkX3RyaWFuZ2xlIiwNCiAgICAicGF0aCI6ICIvaW1hZ2VzL2ljb25zL2ZpZ3VyZV9pbnZlcnRlZF90cmlhbmdsZS5zdmciLA0KICAgICJjb2RlIjogIjJmOGU5YWZlLTg0YjEtNGMyMy1hYjEyLTFjODhjNWQzNmQ0OCINCiAgfSwNCiAgew0KICAgICJpbWFnZSI6ICJjaXJjbGUiLA0KICAgICJwYXRoIjogIi9pbWFnZXMvaWNvbnMvZmlndXJlX2NpcmNsZS5zdmciLA0KICAgICJjb2RlIjogImE0NDhkZGZjLWU5MmMtNDkxZS05OTJiLTkxNmVkNmJiN2Q5YiINCiAgfQ0KXQ==
     ports:
          - "3002:3000"
-    volumes:
-      - /tumlab/apps/mundo3d:/app/downloader
+    #volumes:
+    #  - /tumlab/apps/mundo3d:/app/downloader
       
   regional-mundo3D:
     image: bilinguismotalentum/regional-game:1.1.3.1
@@ -165,6 +165,7 @@ services:
       - "8084:80"
     volumes:
       - ./serverdata.json:/regional/StreamingAssets/serverdata.json
+      - /tumlab/apps/mundo3d:/regional/downloader
     networks:
       - regional-net
     restart: always
